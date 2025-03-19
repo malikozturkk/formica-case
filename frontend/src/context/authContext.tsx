@@ -1,5 +1,6 @@
 "use client"
 import { createContext, useContext, useEffect, useState } from 'react';
+import axios from "axios"
 
 interface User {
   id: string;
@@ -13,8 +14,9 @@ interface User {
 interface AuthContextType {
   user: User | null;
   loading: boolean
-  login: (token: string) => void;
+  login: (accessToken: string, refreshToken: string) => void;
   logout: () => void;
+  refreshAccessToken: () => Promise<string | null>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -41,31 +43,56 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      const decodedUser = decodeToken(token);
+    const accessToken = localStorage.getItem("access_token");
+    if (accessToken) {
+      const decodedUser = decodeToken(accessToken);
       if (decodedUser) {
         setUser(decodedUser);
       } else {
-        localStorage.removeItem('token');
+        localStorage.removeItem("access_token");
+        localStorage.removeItem("refresh_token");
       }
     }
     setLoading(false);
   }, []);
 
-  const login = (token: string) => {
-    localStorage.setItem('token', token);
-    const decodedUser = decodeToken(token);
+  const login = (accessToken: string, refreshToken: string) => {
+    localStorage.setItem("access_token", accessToken);
+    localStorage.setItem("refresh_token", refreshToken);
+    const decodedUser = decodeToken(accessToken);
     setUser(decodedUser);
   };
 
   const logout = () => {
-    localStorage.removeItem('token');
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("refresh_token");
     setUser(null);
   };
 
+  const refreshAccessToken = async (): Promise<string | null> => {
+    const refreshToken = localStorage.getItem("refresh_token");
+    if (!refreshToken) {
+      logout();
+      return null;
+    }
+
+    try {
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL || process.env.API_URL}/auth/refresh-token`, {
+        refresh_token: refreshToken,
+      });
+
+      const { access_token, refresh_token } = response.data;
+      login(access_token, refresh_token);
+      return access_token;
+    } catch (error) {
+      console.error("Failed to refresh token", error);
+      logout();
+      return null;
+    }
+  };
+
   return (
-    <AuthContext.Provider value={{ user, loading, login, logout }}>
+    <AuthContext.Provider value={{ user, loading, login, logout, refreshAccessToken }}>
       {children}
     </AuthContext.Provider>
   );

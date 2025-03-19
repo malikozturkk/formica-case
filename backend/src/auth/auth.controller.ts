@@ -17,4 +17,10 @@ export class AuthController {
   login(@Body() loginDto: LoginDto) {
     return this.authService.login(loginDto);
   }
+
+  @Post('refresh-token')
+  @ApiOperation({ summary: 'Refresh Access Token', description: 'Generate a new access token using refresh token' })
+  refreshToken(@Body('refresh_token') refreshToken: string) {
+    return this.authService.refreshToken(refreshToken);
+  }
 }
