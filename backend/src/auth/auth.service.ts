@@ -13,16 +13,19 @@ export class AuthService {
 
   async login(loginDto: LoginDto) {
     const { email, password } = loginDto;
+    this.logger.log(`Login attempt for email: ${email}`);
 
     const user = await this.prisma.users.findUnique({
       where: { email },
     });
 
     if (!user) {
+      this.logger.warn(`Login failed: User not found for email: ${email}`);
       throw new UnauthorizedException('Geçersiz kimlik bilgileri');
     }
 
     if (password !== user.password) {
+      this.logger.warn(`Login failed: Incorrect password for email: ${email}`);
       throw new UnauthorizedException('Geçersiz kimlik bilgileri');
     }
 
@@ -34,7 +37,8 @@ export class AuthService {
     };
 
     const token = this.jwtService.sign(payload);
-
+    this.logger.log(`Login successful for email: ${email}`);
+    
     return { access_token: token };
   }
 }
