@@ -1,4 +1,4 @@
-import Button from "@/elements/button";
+import React from "react";
 
 export default function Home() {
   return (
