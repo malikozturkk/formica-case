@@ -1,11 +1,14 @@
 "use client"
 import Button from "@/elements/button"
+import Dialog from "@/elements/dialog"
 import Image from "next/image"
 import Link from "next/link"
-import React from "react"
+import React, { useState } from "react"
+import LoginForm from "../LoginForm"
 
 const Navbar = () => {
     const [open, setOpen] = React.useState(false)
+    const [loginDialog, setLoginDialog] = useState(false)
     const items = [
         { href: "/", title: "Anasayfa" },
         { href: "/", title: "İletişim" },
@@ -20,9 +23,7 @@ const Navbar = () => {
                         <Image src="/logo.png" width={73} height={80}alt="TCDD Logo" />
                     </Link>
                     <div className="flex items-center gap-5">
-                        <Link href="/login">
-                            <Button type="button" className="hidden sm:block rounded-2xl">Üye Girişi</Button>
-                        </Link>
+                        <Button type="button" className="hidden sm:block rounded-2xl" onClick={() => setLoginDialog(true)}>Üye Girişi</Button>
                         <Button type="button" className="bg-white border-2 border-blue-900 rounded-md" onClick={() => setOpen(!open)}>
                             <svg
                                 width={20}
@@ -55,9 +56,7 @@ const Navbar = () => {
                         }
                         <div className="flex flex-col space-y-4">
                             <div className="border-b border-gray-200 pb-4">
-                                <Link href="/login">
-                                    <Button type="button" className="rounded-2xl float-right w-auto">Üye Girişi</Button>
-                                </Link>
+                                <Button type="button" className="rounded-2xl float-right w-auto" onClick={() => setLoginDialog(true)}>Üye Girişi</Button>
                             </div>
                             {items.map((item, index) => (
                                 <Link key={index} href={item.href} title={item.title} className="text-base font-medium text-gray-800 transition-all duration-200 hover:text-primary focus:text-primary px-4">
@@ -67,6 +66,9 @@ const Navbar = () => {
                         </div>
                     </div>
                 </div>
+                <Dialog isOpen={loginDialog} onClose={() => setLoginDialog(false)} title="Giriş Yap">
+                    <LoginForm />
+                </Dialog>
         </header>
 
     )
