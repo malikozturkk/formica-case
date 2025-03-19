@@ -18,16 +18,20 @@ const Button: React.FC<ButtonProps> = ({
   children,
 }) => {
   return (
-      <button
-        className={`px-4 py-3 cursor-pointer justify-center bg-blue-900 text-white ${loading ? 'opacity-50' : 'opacity-100'} outline-none focus:outline-darkBlue ${className ? className : ''}`}
-        type={type}
-        onClick={onClick}
-        disabled={disabled || loading}
-      >
-        <div className="flex items-center justify-center gap-2">
-          {children}
-        </div>
-      </button>
+    <button
+    className={`px-4 py-3 flex items-center justify-center gap-2 bg-blue-900 text-white rounded-md transition-all duration-300
+      ${loading ? 'opacity-50 cursor-not-allowed' : 'opacity-100 cursor-pointer'}
+      ${className ? className : ''}`}
+      type={type}
+      onClick={onClick}
+      disabled={disabled || loading}
+    >
+      {loading ? (
+        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+      ) : (
+        children
+      )}
+    </button>
   )
 }
 

@@ -3,7 +3,7 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.53">
     <root id="1">
       <DateStyle>mdy</DateStyle>
-      <IntrospectionStateNumber>825</IntrospectionStateNumber>
+      <IntrospectionStateNumber>842</IntrospectionStateNumber>
       <ServerVersion>15.12</ServerVersion>
       <StartupTime>1742374438</StartupTime>
       <TimeZones>true ACDT
@@ -798,7 +798,7 @@ true posixrules
 13252||10|C|G
 13252||-9223372036854775808|U|G
 13252||10|U|G</Grants>
-      <IntrospectionStateNumber>825</IntrospectionStateNumber>
+      <IntrospectionStateNumber>842</IntrospectionStateNumber>
       <ObjectId>16384</ObjectId>
       <OwnerName>malik</OwnerName>
     </database>
@@ -4219,8 +4219,8 @@ true posixrules
     </schema>
     <schema id="263" parent="2" name="public">
       <Current>1</Current>
-      <IntrospectionStateNumber>825</IntrospectionStateNumber>
-      <LastIntrospectionLocalTimestamp>2025-03-19.09:41:00</LastIntrospectionLocalTimestamp>
+      <IntrospectionStateNumber>842</IntrospectionStateNumber>
+      <LastIntrospectionLocalTimestamp>2025-03-19.12:08:53</LastIntrospectionLocalTimestamp>
       <ObjectId>16545</ObjectId>
       <StateNumber>801</StateNumber>
       <OwnerName>malik</OwnerName>
@@ -4236,15 +4236,7 @@ EXPIRED</Labels>
       <SubKind>enum</SubKind>
       <OwnerName>malik</OwnerName>
     </object-type>
-    <sequence id="265" parent="263" name="Users_id_seq">
-      <ObjectId>16589</ObjectId>
-      <SequenceIdentity>1</SequenceIdentity>
-      <StartValue>1</StartValue>
-      <StateNumber>822</StateNumber>
-      <StoredType>integer|0s</StoredType>
-      <OwnerName>malik</OwnerName>
-    </sequence>
-    <sequence id="266" parent="263" name="tickets_id_seq">
+    <sequence id="265" parent="263" name="tickets_id_seq">
       <ObjectId>16608</ObjectId>
       <SequenceIdentity>1</SequenceIdentity>
       <StartValue>1</StartValue>
@@ -4252,7 +4244,7 @@ EXPIRED</Labels>
       <StoredType>integer|0s</StoredType>
       <OwnerName>malik</OwnerName>
     </sequence>
-    <sequence id="267" parent="263" name="travels_id_seq">
+    <sequence id="266" parent="263" name="travels_id_seq">
       <ObjectId>16598</ObjectId>
       <SequenceIdentity>1</SequenceIdentity>
       <StartValue>1</StartValue>
@@ -4260,134 +4252,78 @@ EXPIRED</Labels>
       <StoredType>integer|0s</StoredType>
       <OwnerName>malik</OwnerName>
     </sequence>
-    <table id="268" parent="263" name="Users">
-      <ObjectId>16590</ObjectId>
-      <StateNumber>822</StateNumber>
-      <AccessMethodId>2</AccessMethodId>
+    <sequence id="267" parent="263" name="users_id_seq">
+      <ObjectId>16769</ObjectId>
+      <SequenceIdentity>1</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>839</StateNumber>
+      <StoredType>integer|0s</StoredType>
       <OwnerName>malik</OwnerName>
-    </table>
-    <table id="269" parent="263" name="_prisma_migrations">
+    </sequence>
+    <table id="268" parent="263" name="_prisma_migrations">
       <ObjectId>16546</ObjectId>
       <StateNumber>808</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>malik</OwnerName>
     </table>
-    <table id="270" parent="263" name="tickets">
+    <table id="269" parent="263" name="tickets">
       <ObjectId>16609</ObjectId>
       <StateNumber>822</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>malik</OwnerName>
     </table>
-    <table id="271" parent="263" name="travels">
+    <table id="270" parent="263" name="travels">
       <ObjectId>16599</ObjectId>
       <StateNumber>822</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>malik</OwnerName>
     </table>
+    <table id="271" parent="263" name="users">
+      <ObjectId>16770</ObjectId>
+      <StateNumber>839</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>malik</OwnerName>
+    </table>
     <column id="272" parent="268" name="id">
-      <DefaultExpression>nextval(&apos;&quot;Users_id_seq&quot;&apos;::regclass)</DefaultExpression>
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-      <StateNumber>822</StateNumber>
-      <StoredType>integer|0s</StoredType>
-      <SequenceId>16589</SequenceId>
-      <TypeId>23</TypeId>
-    </column>
-    <column id="273" parent="268" name="firstName">
-      <NotNull>1</NotNull>
-      <Position>2</Position>
-      <StateNumber>822</StateNumber>
-      <StoredType>text|0s</StoredType>
-      <TypeId>25</TypeId>
-    </column>
-    <column id="274" parent="268" name="lastName">
-      <NotNull>1</NotNull>
-      <Position>3</Position>
-      <StateNumber>822</StateNumber>
-      <StoredType>text|0s</StoredType>
-      <TypeId>25</TypeId>
-    </column>
-    <column id="275" parent="268" name="email">
-      <NotNull>1</NotNull>
-      <Position>4</Position>
-      <StateNumber>822</StateNumber>
-      <StoredType>text|0s</StoredType>
-      <TypeId>25</TypeId>
-    </column>
-    <column id="276" parent="268" name="password">
-      <NotNull>1</NotNull>
-      <Position>5</Position>
-      <StateNumber>822</StateNumber>
-      <StoredType>text|0s</StoredType>
-      <TypeId>25</TypeId>
-    </column>
-    <index id="277" parent="268" name="Users_pkey">
-      <ColNames>id</ColNames>
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16596</ObjectId>
-      <Primary>1</Primary>
-      <StateNumber>822</StateNumber>
-      <Unique>1</Unique>
-      <AccessMethodId>403</AccessMethodId>
-    </index>
-    <index id="278" parent="268" name="Users_email_key">
-      <ColNames>email</ColNames>
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16616</ObjectId>
-      <StateNumber>822</StateNumber>
-      <Unique>1</Unique>
-      <AccessMethodId>403</AccessMethodId>
-      <CollationNames>default</CollationNames>
-      <CollationIds>100</CollationIds>
-      <CollationParentNames>pg_catalog</CollationParentNames>
-    </index>
-    <key id="279" parent="268" name="Users_pkey">
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16597</ObjectId>
-      <Primary>1</Primary>
-      <StateNumber>822</StateNumber>
-      <UnderlyingIndexId>16596</UnderlyingIndexId>
-    </key>
-    <column id="280" parent="269" name="id">
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StateNumber>802</StateNumber>
       <StoredType>varchar(36)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="281" parent="269" name="checksum">
+    <column id="273" parent="268" name="checksum">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StateNumber>802</StateNumber>
       <StoredType>varchar(64)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="282" parent="269" name="finished_at">
+    <column id="274" parent="268" name="finished_at">
       <Position>3</Position>
       <StateNumber>802</StateNumber>
       <StoredType>timestamp with time zone|0s</StoredType>
       <TypeId>1184</TypeId>
     </column>
-    <column id="283" parent="269" name="migration_name">
+    <column id="275" parent="268" name="migration_name">
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StateNumber>802</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="284" parent="269" name="logs">
+    <column id="276" parent="268" name="logs">
       <Position>5</Position>
       <StateNumber>802</StateNumber>
       <StoredType>text|0s</StoredType>
       <TypeId>25</TypeId>
     </column>
-    <column id="285" parent="269" name="rolled_back_at">
+    <column id="277" parent="268" name="rolled_back_at">
       <Position>6</Position>
       <StateNumber>802</StateNumber>
       <StoredType>timestamp with time zone|0s</StoredType>
       <TypeId>1184</TypeId>
     </column>
-    <column id="286" parent="269" name="started_at">
+    <column id="278" parent="268" name="started_at">
       <DefaultExpression>now()</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>7</Position>
@@ -4395,7 +4331,7 @@ EXPIRED</Labels>
       <StoredType>timestamp with time zone|0s</StoredType>
       <TypeId>1184</TypeId>
     </column>
-    <column id="287" parent="269" name="applied_steps_count">
+    <column id="279" parent="268" name="applied_steps_count">
       <DefaultExpression>0</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>8</Position>
@@ -4403,7 +4339,7 @@ EXPIRED</Labels>
       <StoredType>integer|0s</StoredType>
       <TypeId>23</TypeId>
     </column>
-    <index id="288" parent="269" name="_prisma_migrations_pkey">
+    <index id="280" parent="268" name="_prisma_migrations_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16553</ObjectId>
@@ -4415,14 +4351,14 @@ EXPIRED</Labels>
       <CollationIds>100</CollationIds>
       <CollationParentNames>pg_catalog</CollationParentNames>
     </index>
-    <key id="289" parent="269" name="_prisma_migrations_pkey">
+    <key id="281" parent="268" name="_prisma_migrations_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16554</ObjectId>
       <Primary>1</Primary>
       <StateNumber>802</StateNumber>
       <UnderlyingIndexId>16553</UnderlyingIndexId>
     </key>
-    <column id="290" parent="270" name="id">
+    <column id="282" parent="269" name="id">
       <DefaultExpression>nextval(&apos;tickets_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -4431,21 +4367,21 @@ EXPIRED</Labels>
       <SequenceId>16608</SequenceId>
       <TypeId>23</TypeId>
     </column>
-    <column id="291" parent="270" name="ticketNumber">
+    <column id="283" parent="269" name="ticketNumber">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StateNumber>822</StateNumber>
       <StoredType>integer|0s</StoredType>
       <TypeId>23</TypeId>
     </column>
-    <column id="292" parent="270" name="status">
+    <column id="284" parent="269" name="status">
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StateNumber>822</StateNumber>
       <StoredType>&quot;TicketStatus&quot;|0s</StoredType>
       <TypeId>16580</TypeId>
     </column>
-    <column id="293" parent="270" name="createdAt">
+    <column id="285" parent="269" name="createdAt">
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>4</Position>
@@ -4453,14 +4389,14 @@ EXPIRED</Labels>
       <StoredType>timestamp(3)|0s</StoredType>
       <TypeId>1114</TypeId>
     </column>
-    <column id="294" parent="270" name="updatedAt">
+    <column id="286" parent="269" name="updatedAt">
       <NotNull>1</NotNull>
       <Position>5</Position>
       <StateNumber>822</StateNumber>
       <StoredType>timestamp(3)|0s</StoredType>
       <TypeId>1114</TypeId>
     </column>
-    <index id="295" parent="270" name="tickets_pkey">
+    <index id="287" parent="269" name="tickets_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16614</ObjectId>
@@ -4469,14 +4405,14 @@ EXPIRED</Labels>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="296" parent="270" name="tickets_pkey">
+    <key id="288" parent="269" name="tickets_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16615</ObjectId>
       <Primary>1</Primary>
       <StateNumber>822</StateNumber>
       <UnderlyingIndexId>16614</UnderlyingIndexId>
     </key>
-    <column id="297" parent="271" name="id">
+    <column id="289" parent="270" name="id">
       <DefaultExpression>nextval(&apos;travels_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -4485,42 +4421,42 @@ EXPIRED</Labels>
       <SequenceId>16598</SequenceId>
       <TypeId>23</TypeId>
     </column>
-    <column id="298" parent="271" name="departure">
+    <column id="290" parent="270" name="departure">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StateNumber>822</StateNumber>
       <StoredType>text|0s</StoredType>
       <TypeId>25</TypeId>
     </column>
-    <column id="299" parent="271" name="arrival">
+    <column id="291" parent="270" name="arrival">
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StateNumber>822</StateNumber>
       <StoredType>text|0s</StoredType>
       <TypeId>25</TypeId>
     </column>
-    <column id="300" parent="271" name="departureTime">
+    <column id="292" parent="270" name="departureTime">
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StateNumber>822</StateNumber>
       <StoredType>timestamp(3)|0s</StoredType>
       <TypeId>1114</TypeId>
     </column>
-    <column id="301" parent="271" name="arrivalTime">
+    <column id="293" parent="270" name="arrivalTime">
       <NotNull>1</NotNull>
       <Position>5</Position>
       <StateNumber>822</StateNumber>
       <StoredType>timestamp(3)|0s</StoredType>
       <TypeId>1114</TypeId>
     </column>
-    <column id="302" parent="271" name="ticketLeft">
+    <column id="294" parent="270" name="ticketLeft">
       <NotNull>1</NotNull>
       <Position>6</Position>
       <StateNumber>822</StateNumber>
       <StoredType>integer|0s</StoredType>
       <TypeId>23</TypeId>
     </column>
-    <column id="303" parent="271" name="createdAt">
+    <column id="295" parent="270" name="createdAt">
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>7</Position>
@@ -4528,14 +4464,14 @@ EXPIRED</Labels>
       <StoredType>timestamp(3)|0s</StoredType>
       <TypeId>1114</TypeId>
     </column>
-    <column id="304" parent="271" name="updatedAt">
+    <column id="296" parent="270" name="updatedAt">
       <NotNull>1</NotNull>
       <Position>8</Position>
       <StateNumber>822</StateNumber>
       <StoredType>timestamp(3)|0s</StoredType>
       <TypeId>1114</TypeId>
     </column>
-    <index id="305" parent="271" name="travels_pkey">
+    <index id="297" parent="270" name="travels_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16606</ObjectId>
@@ -4544,12 +4480,76 @@ EXPIRED</Labels>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="306" parent="271" name="travels_pkey">
+    <key id="298" parent="270" name="travels_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16607</ObjectId>
       <Primary>1</Primary>
       <StateNumber>822</StateNumber>
       <UnderlyingIndexId>16606</UnderlyingIndexId>
+    </key>
+    <column id="299" parent="271" name="id">
+      <DefaultExpression>nextval(&apos;users_id_seq&apos;::regclass)</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>839</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <SequenceId>16769</SequenceId>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="300" parent="271" name="firstName">
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>839</StateNumber>
+      <StoredType>text|0s</StoredType>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="301" parent="271" name="lastName">
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StateNumber>839</StateNumber>
+      <StoredType>text|0s</StoredType>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="302" parent="271" name="email">
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+      <StateNumber>839</StateNumber>
+      <StoredType>text|0s</StoredType>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="303" parent="271" name="password">
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+      <StateNumber>839</StateNumber>
+      <StoredType>text|0s</StoredType>
+      <TypeId>25</TypeId>
+    </column>
+    <index id="304" parent="271" name="users_pkey">
+      <ColNames>id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16776</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>839</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <index id="305" parent="271" name="users_email_key">
+      <ColNames>email</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16778</ObjectId>
+      <StateNumber>839</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationNames>default</CollationNames>
+      <CollationIds>100</CollationIds>
+      <CollationParentNames>pg_catalog</CollationParentNames>
+    </index>
+    <key id="306" parent="271" name="users_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16777</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>839</StateNumber>
+      <UnderlyingIndexId>16776</UnderlyingIndexId>
     </key>
   </database-model>
 </dataSource>

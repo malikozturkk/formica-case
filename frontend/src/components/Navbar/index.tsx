@@ -5,6 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 import React, { useState } from "react"
 import LoginForm from "../LoginForm"
+import { useAuth } from "@/context/authContext"
 
 const Navbar = () => {
     const [open, setOpen] = React.useState(false)
@@ -15,6 +16,8 @@ const Navbar = () => {
         { href: "/", title: "Seyahatler" },
         { href: "/", title: "Anasayfa" },
     ];
+
+    const { user, logout, loading } = useAuth();
     return (
         <header className={`${open ? "pb-6" : ""} bg-white lg:pb-0 mb-3 md:mb-5 shadow-sm`}>
             <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
@@ -23,7 +26,7 @@ const Navbar = () => {
                         <Image src="/logo.png" width={73} height={80}alt="TCDD Logo" />
                     </Link>
                     <div className="flex items-center gap-5">
-                        <Button type="button" className="hidden sm:block rounded-2xl" onClick={() => setLoginDialog(true)}>Üye Girişi</Button>
+                        <Button type="button" className="hidden sm:block rounded-2xl" loading={loading} onClick={() => !user && setLoginDialog(true)}>{user ? `${user.firstName} ${user.lastName}` : "Üye Girişi"}</Button>
                         <Button type="button" className="bg-white border-2 border-blue-900 rounded-md" onClick={() => setOpen(!open)}>
                             <svg
                                 width={20}
@@ -56,18 +59,25 @@ const Navbar = () => {
                         }
                         <div className="flex flex-col space-y-4">
                             <div className="border-b border-gray-200 pb-4">
-                                <Button type="button" className="rounded-2xl float-right w-auto" onClick={() => setLoginDialog(true)}>Üye Girişi</Button>
+                                <Button type="button" className="rounded-2xl float-right w-auto" loading={loading} onClick={() => !user && setLoginDialog(true)}>
+                                    {user ? `Hoşgeldiniz, ${user.firstName} ${user.lastName}` : "Üye Girişi"}
+                                </Button>
                             </div>
                             {items.map((item, index) => (
                                 <Link key={index} href={item.href} title={item.title} className="text-base font-medium text-gray-800 transition-all duration-200 hover:text-primary focus:text-primary px-4">
                                     {item.title}
                                 </Link>
                             ))}
+                            {user &&
+                                <Link href="#" title="Çıkış Yap" className="text-base font-medium text-gray-800 transition-all duration-200 hover:text-primary focus:text-primary px-4" onClick={() => {logout(), setOpen(!open)}}>
+                                    Çıkış Yap
+                                </Link>
+                            }
                         </div>
                     </div>
                 </div>
                 <Dialog isOpen={loginDialog} onClose={() => setLoginDialog(false)} title="Giriş Yap">
-                    <LoginForm />
+                    <LoginForm setLoginDialog={setLoginDialog}  />
                 </Dialog>
         </header>
 
