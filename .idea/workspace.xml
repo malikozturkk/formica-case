@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1e1f3e5a-6ad7-4288-a67c-428430174150" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/src/elements/dialog.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Navbar/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Navbar/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/elements/dialog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/elements/dialog.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

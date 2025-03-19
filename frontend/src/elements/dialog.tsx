@@ -41,7 +41,7 @@ export default function Dialog({
         />
       )}
 
-      <div className="bg-white rounded-2xl shadow-lg w-full max-w-lg p-6 relative transition-transform duration-300 md:translate-y-[-20px] translate-y-0">
+      <div className="bg-white rounded-2xl rounded-b-none md:rounded-b-2xl shadow-lg w-full max-w-lg p-6 relative transition-transform duration-300 md:translate-y-[-20px] translate-y-0">
         {closeIcon && (
           <button
             className="absolute cursor-pointer top-6 right-6 text-gray-500 hover:text-gray-700"
