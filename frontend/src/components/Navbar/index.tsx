@@ -6,8 +6,10 @@ import React from "react"
 
 const Navbar = () => {
     const [open, setOpen] = React.useState(false)
-    const itemStyle = "text-base font-medium text-black transition-all duration-200 hover:text-primary focus:text-primary"
     const items = [
+        { href: "/", title: "Anasayfa" },
+        { href: "/", title: "İletişim" },
+        { href: "/", title: "Seyahatler" },
         { href: "/", title: "Anasayfa" },
     ];
     return (
@@ -18,7 +20,9 @@ const Navbar = () => {
                         <Image src="/logo.png" width={73} height={80}alt="TCDD Logo" />
                     </Link>
                     <div className="flex items-center gap-5">
-                        <Button type="button" className="hidden sm:block rounded-2xl">Üye Girişi</Button>
+                        <Link href="/login">
+                            <Button type="button" className="hidden sm:block rounded-2xl">Üye Girişi</Button>
+                        </Link>
                         <Button type="button" className="bg-white border-2 border-blue-900 rounded-md" onClick={() => setOpen(!open)}>
                             <svg
                                 width={20}
@@ -33,21 +37,36 @@ const Navbar = () => {
                         </Button>
                     </div>
                 </nav>
-
-                {open &&
-                    <nav className="pt-4 pb-6 mt-3 bg-white border border-primary rounded-md shadow-md">
-                        <div className="flow-root">
-                            <div className="flex flex-col px-6 -my-2 space-y-1">
-                                {items.map((item, index) => (
-                                    <Link key={index} href={item.href} title={item.title} className={itemStyle}>
-                                        {item.title}
-                                    </Link>
-                                ))}
-                            </div>
-                        </div>
-                    </nav>
-                }
             </div>
+
+                {open && (
+                    <div 
+                        className="fixed inset-0 bg-black opacity-50 z-40"
+                        onClick={() => setOpen(false)}
+                    ></div>
+                )}
+            
+                <div className={`fixed top-0 right-0 h-full w-3/4 md:w-96 bg-white shadow-lg z-50 transform ${open ? "translate-x-0" : "translate-x-full"} transition-transform duration-300 ease-in-out`}>
+                    <div className="p-4">
+                        {open &&
+                            <button className="cursor-pointer absolute -left-12 w-9 h-9" onClick={() => setOpen(false)}>
+                                <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><g strokeWidth="0"></g><g strokeLinecap="round" strokeLinejoin="round"></g><g> <path fillRule="evenodd" clipRule="evenodd" d="M5.29289 5.29289C5.68342 4.90237 6.31658 4.90237 6.70711 5.29289L12 10.5858L17.2929 5.29289C17.6834 4.90237 18.3166 4.90237 18.7071 5.29289C19.0976 5.68342 19.0976 6.31658 18.7071 6.70711L13.4142 12L18.7071 17.2929C19.0976 17.6834 19.0976 18.3166 18.7071 18.7071C18.3166 19.0976 17.6834 19.0976 17.2929 18.7071L12 13.4142L6.70711 18.7071C6.31658 19.0976 5.68342 19.0976 5.29289 18.7071C4.90237 18.3166 4.90237 17.6834 5.29289 17.2929L10.5858 12L5.29289 6.70711C4.90237 6.31658 4.90237 5.68342 5.29289 5.29289Z"></path> </g></svg>
+                            </button>
+                        }
+                        <div className="flex flex-col space-y-4">
+                            <div className="border-b border-gray-200 pb-4">
+                                <Link href="/login">
+                                    <Button type="button" className="rounded-2xl float-right w-auto">Üye Girişi</Button>
+                                </Link>
+                            </div>
+                            {items.map((item, index) => (
+                                <Link key={index} href={item.href} title={item.title} className="text-base font-medium text-gray-800 transition-all duration-200 hover:text-primary focus:text-primary px-4">
+                                    {item.title}
+                                </Link>
+                            ))}
+                        </div>
+                    </div>
+                </div>
         </header>
 
     )
