@@ -10,14 +10,9 @@ import { useAuth } from "@/context/authContext"
 const Navbar = () => {
     const [open, setOpen] = React.useState(false)
     const [loginDialog, setLoginDialog] = useState(false)
-    const items = [
-        { href: "/", title: "Anasayfa" },
-        { href: "/", title: "İletişim" },
-        { href: "/", title: "Seyahatler" },
-        { href: "/", title: "Anasayfa" },
-    ];
-
     const { user, logout, loading } = useAuth();
+
+    const navItemsClassName = "text-base font-medium text-gray-800 transition-all duration-200 hover:text-primary focus:text-primary px-4"
     return (
         <header className={`${open ? "pb-6" : ""} bg-white lg:pb-0 mb-3 md:mb-5 shadow-sm`}>
             <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
@@ -63,15 +58,21 @@ const Navbar = () => {
                                     {user ? `Hoşgeldiniz, ${user.firstName} ${user.lastName}` : "Üye Girişi"}
                                 </Button>
                             </div>
-                            {items.map((item, index) => (
-                                <Link key={index} href={item.href} title={item.title} className="text-base font-medium text-gray-800 transition-all duration-200 hover:text-primary focus:text-primary px-4">
-                                    {item.title}
-                                </Link>
-                            ))}
+                            <Link href="/" title="Anasayfa" className={navItemsClassName} onClick={() => setOpen(!open)}>
+                                Anasayfa
+                            </Link>
                             {user &&
-                                <Link href="#" title="Çıkış Yap" className="text-base font-medium text-gray-800 transition-all duration-200 hover:text-primary focus:text-primary px-4" onClick={() => {logout(), setOpen(!open)}}>
-                                    Çıkış Yap
-                                </Link>
+                                <>
+                                    <Link href="/tickets" title="Biletlerim" className={navItemsClassName} onClick={() => setOpen(!open)}>
+                                        Biletlerim
+                                    </Link>
+                                    <Link href="/check-in" title="Check-In" className={navItemsClassName} onClick={() => setOpen(!open)}>
+                                        Check-in Yap
+                                    </Link>
+                                    <Link href="#" title="Çıkış Yap" className={navItemsClassName} onClick={() => {logout(), setOpen(!open)}}>
+                                        Çıkış Yap
+                                    </Link>
+                                </>
                             }
                         </div>
                     </div>
