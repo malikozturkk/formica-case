@@ -5,34 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1e1f3e5a-6ad7-4288-a67c-428430174150" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/.env" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/.idea/dataSources.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/backend" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/docker-compose.dev.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/docker-compose.prod.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/frontend/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/frontend/Dockerfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/frontend/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/frontend/eslint.config.mjs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/frontend/next.config.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/frontend/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/frontend/postcss.config.mjs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/frontend/public/file.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/frontend/public/globe.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/frontend/public/next.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/frontend/public/vercel.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/frontend/public/window.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/frontend/src/app/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/frontend/src/app/globals.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/frontend/src/app/layout.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/frontend/src/app/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/frontend/tsconfig.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/frontend/yarn.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/nginx/nginx.conf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/backend/prisma/schema.prisma" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/backend/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d76890f6-e738-4e3a-9c50-85a61a778825.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d76890f6-e738-4e3a-9c50-85a61a778825.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d76890f6-e738-4e3a-9c50-85a61a778825/storage_v2/_src_/database/formica.QyOf1w/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d76890f6-e738-4e3a-9c50-85a61a778825/storage_v2/_src_/database/formica.QyOf1w/schema/public.abK9xQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Navbar/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Navbar/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
