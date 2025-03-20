@@ -1,12 +1,16 @@
 import axios from "axios";
-import { cookies } from "next/headers";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || process.env.API_URL || "http://formica-case.local/api";
 
+export const getCookie = (name: string) => {
+  if (typeof document === "undefined") return null; 
+  const cookies = document.cookie.split("; ").find((row) => row.startsWith(`${name}=`));
+  return cookies ? cookies.split("=")[1] : null;
+};
+
 export const refreshAccessToken = async (): Promise<string | null> => {
   try {
-    const cookieStore = await cookies();
-    const refreshToken = cookieStore.get("refresh_token")?.value;
+    const refreshToken = getCookie("refresh_token");
 
     if (!refreshToken) {
       return null;
@@ -18,9 +22,8 @@ export const refreshAccessToken = async (): Promise<string | null> => {
 
     const { access_token, refresh_token: newRefreshToken } = response.data;
 
-    const cookieStoreNew = await cookies();
-    cookieStoreNew.set("access_token", access_token);
-    cookieStoreNew.set("refresh_token", newRefreshToken);
+    document.cookie = `access_token=${access_token}; path=/;`;
+    document.cookie = `refresh_token=${newRefreshToken}; path=/;`;
 
     return access_token;
   } catch (error) {
