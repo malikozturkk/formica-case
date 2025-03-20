@@ -8,6 +8,7 @@ const TicketCardsContainer: React.FC<ITicketCardsContainer> = ({ travelsData }) 
 
     const handleSelect = async () => {
         setLoading(true);
+        //TODO: api call
         setTimeout(() => {
           setLoading(false);
         }, 3000); 

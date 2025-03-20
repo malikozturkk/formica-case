@@ -2,6 +2,7 @@ import TicketCardsContainer from "@/components/TicketCard";
 import { TravelData } from "@/components/TicketCard/TicketCard.types";
 
 export default async function Home() {
+  //TODO: api call
   const travelsData: TravelData[] = [
     {
       "id": 3,
