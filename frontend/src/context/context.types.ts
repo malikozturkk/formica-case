@@ -1,0 +1,16 @@
+export interface User {
+  id: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  iat?: number;
+  exp?: number;
+}
+
+export interface AuthContextType {
+  user: User | null;
+  loading: boolean
+  login: (accessToken: string, refreshToken: string) => void;
+  logout: () => void;
+  refreshAccessToken: () => Promise<string | null>;
+}

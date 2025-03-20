@@ -4,10 +4,7 @@ import Input from "@/elements/input"
 import { useState } from "react"
 import { login } from "@/api/auth"
 import { useAuth } from "@/context/authContext"
-
-interface ILoginForm {
-  setLoginDialog: React.Dispatch<React.SetStateAction<boolean>>
-}
+import { ILoginForm } from "./LoginForm.types"
 
 const LoginForm: React.FC<ILoginForm> = ({ setLoginDialog }) => {
   const [email, setEmail] = useState("")

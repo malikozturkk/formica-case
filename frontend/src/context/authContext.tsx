@@ -1,23 +1,7 @@
 "use client"
 import { createContext, useContext, useEffect, useState } from 'react';
 import axios from "axios"
-
-interface User {
-  id: string;
-  email: string;
-  firstName: string;
-  lastName: string;
-  iat?: number;
-  exp?: number;
-}
-
-interface AuthContextType {
-  user: User | null;
-  loading: boolean
-  login: (accessToken: string, refreshToken: string) => void;
-  logout: () => void;
-  refreshAccessToken: () => Promise<string | null>;
-}
+import { AuthContextType, User } from './context.types';
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 

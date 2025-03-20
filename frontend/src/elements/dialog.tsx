@@ -1,7 +1,7 @@
 'use client';
 import { useEffect } from 'react';
 
-interface DialogProps {
+type DialogProps = {
   isOpen: boolean;
   onClose: () => void;
   title?: string;
