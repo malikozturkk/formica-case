@@ -24,7 +24,6 @@ model Travels {
   arrival         String
   departureTime   DateTime
   arrivalTime     DateTime
-  ticketLeft      Int
   createdAt       DateTime    @default(now())
   updatedAt       DateTime    @updatedAt
 
