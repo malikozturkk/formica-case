@@ -2,7 +2,7 @@ export class TravelsTransformer {
     static transform(travel: any) {
       return {
         ...travel,
-        duration: this.calculateDuration(travel.departureTime, travel.arrivalTime),
+        duration: TravelsTransformer.calculateDuration(travel.departureTime, travel.arrivalTime), 
       };
     }
   
