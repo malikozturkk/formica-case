@@ -2,7 +2,12 @@ import TicketCardsContainer from "@/components/TicketCard";
 import { TravelData } from "@/components/TicketCard/TicketCard.types";
 
 export default async function Home() {
-  //TODO: api call
+//   const API_URL = process.env.NEXT_PUBLIC_API_URL || process.env.API_URL || 'http://formica-case.local/api';
+//   const travelsDatas = await fetch(`${API_URL}/travels`, {
+//     method: 'GET',
+//     cache: 'no-cache',
+// });
+//   console.log(travelsDatas, "travelsDatas")
   const travelsData: TravelData[] = [
     {
       "id": 3,

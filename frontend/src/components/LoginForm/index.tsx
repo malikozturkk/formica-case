@@ -1,60 +1,58 @@
 "use client"
 import Button from "@/elements/button"
 import Input from "@/elements/input"
-import { useState } from "react"
+import { useForm } from "react-hook-form"
 import { login } from "@/api/auth"
 import { useAuth } from "@/context/authContext"
 import { ILoginForm } from "./LoginForm.types"
 
 const LoginForm: React.FC<ILoginForm> = ({ setLoginDialog }) => {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [errors, setErrors] = useState<{ email?: string; password?: string; response?: string }>({});
-  const { login: saveToken } = useAuth()
+  const {
+    register,
+    handleSubmit,
+    setError,
+    formState: { errors, isSubmitting },
+  } = useForm<{ email: string; password: string }>();
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    let newErrors: { email?: string; password?: string } = {};
-    if (!email) newErrors.email = "E-posta alanı zorunludur.";
-    if (!password) newErrors.password = "Şifre alanı zorunludur.";
-    setErrors(newErrors);
+  const { login: saveToken } = useAuth();
 
-    if (Object.keys(newErrors).length === 0) {
-      try {
-        const { access_token, refresh_token } = await login(email, password);
-        saveToken(access_token, refresh_token);
-        setErrors({ response: '', email: '', password: '' })
-        setLoginDialog(false)
-      } catch (error: any) {
-        return setErrors({ response: 'E-mail veya şifre yanlış' });
-      }
+  const onSubmit = async (data: { email: string; password: string }) => {
+    try {
+      const { access_token, refresh_token } = await login(data.email, data.password);
+      saveToken(access_token, refresh_token);
+      setLoginDialog(false);
+    } catch (error: any) {
+      setError("root.response", { message: "E-mail veya şifre yanlış" });
     }
   };
 
-
   return (
     <>
-      {errors.response && <div className="bg-red-500 text-white text-base mb-4 rounded-xl text-center p-4">{errors.response}</div>}
-      <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+      {errors.root?.response && (
+        <div className="bg-red-500 text-white text-base mb-4 rounded-xl text-center p-4">
+          {errors.root.response.message}
+        </div>
+      )}
+      <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)} noValidate>
         <Input
           label="E-Posta"
           type="email"
-          name="email"
-          required
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          error={errors.email}
+          {...register("email", {
+            required: "E-posta alanı zorunludur.",
+            pattern: {
+              value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+              message: "Geçerli bir e-posta adresi giriniz."
+            }
+          })}
+          error={errors.email?.message}
         />
         <Input
           label="Şifre"
           type="password"
-          name="password"
-          required
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          error={errors.password}
+          {...register("password", { required: "Şifre alanı zorunludur." })}
+          error={errors.password?.message}
         />
-      <Button type="submit" className="rounded-2xl w-full">Giriş Yap</Button>
+        <Button type="submit" className="rounded-2xl w-full" disabled={isSubmitting}>Giriş Yap</Button>
       </form>
     </>
   )
