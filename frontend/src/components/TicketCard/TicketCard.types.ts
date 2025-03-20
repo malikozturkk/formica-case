@@ -1,5 +1,11 @@
 export interface ITicketCard {
     travel: TravelData
+    loading: boolean
+    onSelect: (travelId: number) => void;
+}
+
+export interface ITicketCardsContainer {
+    travelsData: TravelData[]
 }
 
 export interface TravelData {

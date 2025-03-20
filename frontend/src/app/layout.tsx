@@ -4,8 +4,8 @@ import Navbar from "@/components/Navbar";
 import { AuthProvider } from "@/context/authContext";
 
 export const metadata: Metadata = {
-  title: "Train Ticket",
-  description: "You can buy train ticket from istanbul to ankara or from ankara to instanbul",
+  title: "İstanbul - Ankara Tren Bileti",
+  description: "İstanbul - Ankara tüm seferleri görüntüleyebilir ve satın alabilirsiniz.",
 };
 
 export default function RootLayout({

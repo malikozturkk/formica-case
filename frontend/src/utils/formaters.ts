@@ -1,9 +1,10 @@
-export const formatTime = (date: Date): { hour: string, date: string } => {
-    const hours = date.getHours().toString().padStart(2, '0');
-    const minutes = date.getMinutes().toString().padStart(2, '0');
-    const formattedDate = `${date.getDate().toString().padStart(2, '0')}.${(date.getMonth() + 1).toString().padStart(2, '0')}.${date.getFullYear()}`;
+export const formatTime = (date: Date): { hour: string; date: string } => {
+    const utcDate = new Date(date.toISOString()); 
+    const hours = utcDate.getUTCHours().toString().padStart(2, "0");
+    const minutes = utcDate.getUTCMinutes().toString().padStart(2, "0");
+    const formattedDate = `${utcDate.getUTCDate().toString().padStart(2, "0")}.${(utcDate.getUTCMonth() + 1).toString().padStart(2, "0")}.${utcDate.getUTCFullYear()}`;
     return {
-        hour: `${hours}:${minutes}`,
-        date: formattedDate
+      hour: `${hours}:${minutes}`,
+      date: formattedDate
     };
 }

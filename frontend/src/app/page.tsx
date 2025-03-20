@@ -1,4 +1,4 @@
-import TicketCard from "@/components/TicketCard";
+import TicketCardsContainer from "@/components/TicketCard";
 import { TravelData } from "@/components/TicketCard/TicketCard.types";
 
 export default async function Home() {
@@ -188,10 +188,6 @@ export default async function Home() {
   ]
 
   return (
-    <section className="flex flex-col gap-8 pt-4">
-      {travelsData.map((travel: TravelData) => (
-        <TicketCard travel={travel} key={travel.departure + travel.departureTime} />
-      ))}
-    </section>
+    <TicketCardsContainer travelsData={travelsData} />
   );
 }
