@@ -33,27 +33,27 @@ const TicketCard: React.FC<ITicketCard> = ({ travel, loading, onSelect }) => {
 
                             <div className="flex justify-between items-center mb-1">
                             <span className={hourCol}>
-                                <time dateTime={formatTime(new Date(travel.departureTime)).hour} title={`Gidiş ${formatTime(new Date(travel.departureTime)).hour}`}>
-                                {formatTime(new Date(travel.departureTime)).hour}
+                                <time dateTime={formatTime(travel.departureTime).hour} title={`Gidiş ${formatTime(travel.departureTime).hour}`}>
+                                {formatTime(travel.departureTime).hour}
                                 </time>
                             </span> 
                             <span className="border-b-2 border-dotted border-[#8392a7] w-full relative mt-0.5 mx-1 md:mx-6 before:content-[''] before:inline-flex before:w-6 before:h-6 before:border-[7px] before:border-white before:bg-[#444763] before:absolute before:-top-3 before:shadow before:shadow-[#bac7d5] before:rounded-full after:content-[''] after:inline-flex after:w-6 after:h-6 after:border-[7px] after:border-white after:bg-[#444763] after:absolute after:-top-3 after:shadow after:shadow-[#bac7d5] after:rounded-full after:right-0"></span>
                             <span className={hourCol}>
-                                <time dateTime={formatTime(new Date(travel.arrivalTime)).hour} title={`Varış ${formatTime(new Date(travel.arrivalTime)).hour}`}>
-                                {formatTime(new Date(travel.arrivalTime)).hour}
+                                <time dateTime={formatTime(travel.arrivalTime).hour} title={`Varış ${formatTime(travel.arrivalTime).hour}`}>
+                                {formatTime(travel.arrivalTime).hour}
                                 </time>
                             </span>
                             </div>
 
                             <div className="flex flex-wrap">
                             <div className="relative text-left order-2 md:order-1 w-1/2 max-w-1/2 md:max-w-1/3">
-                                <span className={`${dateCol} text-left`}>{formatTime(new Date(travel.departureTime)).date}</span>
+                                <span className={`${dateCol} text-left`}>{formatTime(travel.departureTime).date}</span>
                             </div>
                             <div className="order-1 w-full max-w-full md:order-2 md:w-1/2 md:max-w-1/3 text-center relative">
                                 <span className={`${dateCol} text-center`}>Direkt</span>
                             </div>
                             <div className="text-right order-3 relative w-1/2 max-w-1/2 md:max-w-1/3">
-                                <span className={`${dateCol} text-right`}>{formatTime(new Date(travel.arrivalTime)).date}</span>
+                                <span className={`${dateCol} text-right`}>{formatTime(travel.arrivalTime).date}</span>
                             </div>
                             </div>
 
