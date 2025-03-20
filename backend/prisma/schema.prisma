@@ -13,6 +13,7 @@ model Users {
   lastName       String
   email          String  @unique
   password       String
+  balance        Float   @default(0.0)
   refreshToken   String?
 
   @@map("users")
@@ -24,6 +25,7 @@ model Travels {
   arrival         String
   departureTime   DateTime
   arrivalTime     DateTime
+  amount          Float       @default(0.0)
   createdAt       DateTime    @default(now())
   updatedAt       DateTime    @updatedAt
 

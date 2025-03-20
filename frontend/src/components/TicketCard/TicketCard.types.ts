@@ -8,6 +8,7 @@ export interface TravelData {
     arrival: string
     departureTime: string
     arrivalTime: string
+    amount: number
     createdAt: string
     updatedAt: string
     duration: Duration

@@ -1,0 +1,5 @@
+-- AlterTable
+ALTER TABLE "travels" ADD COLUMN     "amount" DOUBLE PRECISION NOT NULL DEFAULT 0.0;
+
+-- AlterTable
+ALTER TABLE "users" ADD COLUMN     "balance" DOUBLE PRECISION NOT NULL DEFAULT 0.0;

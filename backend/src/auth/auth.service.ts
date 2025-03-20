@@ -26,7 +26,7 @@ export class AuthService {
       throw new UnauthorizedException('Geçersiz kimlik bilgileri');
     }
 
-    const tokens = await this.generateTokens(user.id, user.email, user.firstName, user.lastName);
+    const tokens = await this.generateTokens(user.id, user.email, user.firstName, user.lastName, user.balance);
     await this.saveRefreshToken(user.id, tokens.refresh_token);
 
     this.logger.log(`Login successful for email: ${email}`);
@@ -48,7 +48,7 @@ export class AuthService {
         throw new UnauthorizedException('Geçersiz refresh token');
       }
 
-      const tokens = await this.generateTokens(user.id, user.email, user.firstName, user.lastName);
+      const tokens = await this.generateTokens(user.id, user.email, user.firstName, user.lastName, user.balance);
       await this.saveRefreshToken(user.id, tokens.refresh_token);
 
       return tokens;
@@ -57,8 +57,8 @@ export class AuthService {
     }
   }
 
-  private async generateTokens(userId: number, email: string, firstName: string, lastName: string) {
-    const payload = { id: userId, email, firstName, lastName };
+  private async generateTokens(userId: number, email: string, firstName: string, lastName: string, balance: number) {
+    const payload = { id: userId, email, firstName, lastName, balance };
 
     const accessToken = this.jwtService.sign(payload, {
       secret: this.configService.get<string>('JWT_SECRET'),
