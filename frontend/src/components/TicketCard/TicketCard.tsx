@@ -1,7 +1,7 @@
 "use client"
 import Image from "next/image"
 import { ITicketCard } from "./TicketCard.types"
-import { formatTime } from "@/utils/formaters"
+import { formatPrice, formatTime } from "@/utils/formaters"
 
 const TicketCard: React.FC<ITicketCard> = ({ travel, loading, onSelect }) => {
     const citiesCol = "text-xs md:text-sm text-[#8392a7] font-semibold block truncate whitespace-nowrap"
@@ -63,7 +63,7 @@ const TicketCard: React.FC<ITicketCard> = ({ travel, loading, onSelect }) => {
                     <div className="max-w-fit md:max-w-1/4 w-full md:px-4">
                         <div className="md:pr-5">
                         <span className="text-[10px] md:text-sm font-bold text-[#8392a7]">Bilet Ücreti</span>
-                        <p className="text-base md:text-3xl font-bold text-[#444763] my-3 leading-normal">₺{travel.amount}</p>
+                        <p className="text-base md:text-3xl font-bold text-[#444763] my-3 leading-normal">{formatPrice(travel?.amount)}</p>
                         </div>
                     </div>
                     {loading && (

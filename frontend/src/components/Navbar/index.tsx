@@ -6,6 +6,7 @@ import Link from "next/link"
 import React, { useState } from "react"
 import LoginForm from "../LoginForm"
 import { useAuth } from "@/context/authContext"
+import { formatPrice } from "@/utils/formaters"
 
 const Navbar = () => {
     const [open, setOpen] = React.useState(false)
@@ -53,10 +54,11 @@ const Navbar = () => {
                             </button>
                         }
                         <div className="flex flex-col space-y-4">
-                            <div className="border-b border-gray-200 pb-4">
+                            <div className="border-b border-gray-200 pb-4 flex flex-col gap-3 items-start px-4 justify-between md:items-center md:flex-row md:px-0">
                                 <Button type="button" className="rounded-2xl float-right w-auto" loading={loading} onClick={() => !user && setLoginDialog(true)}>
                                     {user ? `Hoşgeldiniz, ${user.firstName} ${user.lastName}` : "Üye Girişi"}
                                 </Button>
+                                <p className="text-base font-bold text-[#444763] leading-normal">Bakiye: {formatPrice(user?.balance)}</p>
                             </div>
                             <Link href="/" title="Anasayfa" className={navItemsClassName} onClick={() => setOpen(!open)}>
                                 Anasayfa

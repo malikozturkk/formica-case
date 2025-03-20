@@ -8,3 +8,13 @@ export const formatTime = (date: Date): { hour: string; date: string } => {
       date: formattedDate
     };
 }
+
+export const formatPrice = (price?: number): string => {
+  if (typeof price !== 'number') return "₺0,00";
+
+  return new Intl.NumberFormat('tr-TR', {
+    style: 'currency',
+    currency: 'TRY',
+    minimumFractionDigits: 2
+  }).format(price);
+};
