@@ -4,6 +4,10 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  app.enableCors({
+    origin: process.env.CLIENT_BASE_URL || 'http://formica-case.local',
+    credentials: true,
+  });
   const config = new DocumentBuilder()
     .setTitle('Train Ticket App')
     .setDescription('This Swagger document defines the backend flow for purchasing train tickets. It outlines the endpoints, request/response structures, and authentication details required for the train ticket purchasing process.')
