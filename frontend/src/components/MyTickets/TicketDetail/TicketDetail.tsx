@@ -22,7 +22,7 @@ const TicketDetail = (ticketData: TicketData) => {
   return (
     <TicketDetailContainer>
       <TicketHeader status={status} />
-      <div className="space-y-3 text-lg">
+      <div className="space-y-3 text-sm md:text-lg">
         <TicketInfo label="Bilet No" value={ticketNumber} />
         <TicketInfo label="Ad Soyad" value={`${firstName} ${lastName}`} />
         <TicketInfo label="E-posta" value={email} />
