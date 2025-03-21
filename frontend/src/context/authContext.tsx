@@ -2,6 +2,7 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { AuthContextType, User } from './context.types';
 import api from '@/lib/axios';
+import { deleteCookie, getCookie, setCookie } from '@/utils/cookie';
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
@@ -27,34 +28,34 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    const accessToken = localStorage.getItem("access_token");
+    const accessToken = getCookie("access_token");
     if (accessToken) {
       const decodedUser = decodeToken(accessToken);
       if (decodedUser) {
         setUser(decodedUser);
       } else {
-        localStorage.removeItem("access_token");
-        localStorage.removeItem("refresh_token");
+        deleteCookie("access_token");
+        deleteCookie("refresh_token");
       }
     }
     setLoading(false);
   }, []);
 
   const login = (accessToken: string, refreshToken: string) => {
-    localStorage.setItem("access_token", accessToken);
-    localStorage.setItem("refresh_token", refreshToken);
+    setCookie("access_token", accessToken, 1);
+    setCookie("refresh_token", refreshToken, 30);
     const decodedUser = decodeToken(accessToken);
     setUser(decodedUser);
   };
 
   const logout = () => {
-    localStorage.removeItem("access_token");
-    localStorage.removeItem("refresh_token");
+    deleteCookie("access_token");
+    deleteCookie("refresh_token");
     setUser(null);
   };
 
   const refreshAccessToken = async (): Promise<string | null> => {
-    const refreshToken = localStorage.getItem("refresh_token");
+    const refreshToken = getCookie("refresh_token");
     if (!refreshToken) {
       logout();
       return null;

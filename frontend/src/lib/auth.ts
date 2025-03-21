@@ -1,10 +1,11 @@
+import { getCookie, setCookie } from "@/utils/cookie";
 import axios from "axios";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || process.env.API_URL || "http://formica-case.local/api";
 
 export const refreshAccessToken = async (): Promise<string | null> => {
   try {
-    const refreshToken = localStorage.getItem("refresh_token");
+    const refreshToken = getCookie("refresh_token");
 
     if (!refreshToken) {
       return null;
@@ -15,8 +16,8 @@ export const refreshAccessToken = async (): Promise<string | null> => {
     });
 
     const { access_token, refresh_token: newRefreshToken } = response.data;
-    localStorage.setItem("access_token", access_token);
-    localStorage.setItem("refresh_token", newRefreshToken);
+    setCookie("access_token", access_token, 1);
+    setCookie("refresh_token", newRefreshToken, 30);
 
     return access_token;
   } catch (error) {
