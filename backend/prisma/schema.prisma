@@ -15,6 +15,7 @@ model Users {
   password       String
   balance        Float   @default(0.0)
   refreshToken   String?
+  tickets        Tickets[]
 
   @@map("users")
 }
@@ -28,6 +29,7 @@ model Travels {
   amount          Float       @default(0.0)
   createdAt       DateTime    @default(now())
   updatedAt       DateTime    @updatedAt
+  tickets         Tickets[]
 
   @@map("travels")
 }
@@ -41,10 +43,15 @@ enum TicketStatus {
 
 model Tickets {
   id              Int                 @id @default(autoincrement())
-  ticketNumber    Int
-  status          TicketStatus
+  ticketNumber    Int                 @unique
+  status          TicketStatus        @default(ACQUIRED)
   createdAt       DateTime            @default(now())
   updatedAt       DateTime            @updatedAt
+
+  userId          Int                 @map("user_id")
+  travelId        Int                 @map("travel_id") 
+  user            Users               @relation(fields: [userId], references: [id])
+  travel          Travels             @relation(fields: [travelId], references: [id])
 
   @@map("tickets")
 }

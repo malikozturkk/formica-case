@@ -5,8 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1e1f3e5a-6ad7-4288-a67c-428430174150" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/backend/prisma/migrations/20250320223724_change_tickets_relations/migration.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/prisma/migrations/20250320224026_fix_ticket_relations/migration.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/auth/auth.guard.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/travels/dto/travels.dto.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/travels/travels.pipe.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/backend/prisma/schema.prisma" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/auth/auth.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/auth/auth.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/travels/travels.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/travels/travels.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/travels/travels.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/travels/travels.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/travels/travels.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/travels/travels.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/TicketCard/TicketCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/TicketCard/TicketCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/TicketCard/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/TicketCard/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/context/authContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/context/authContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/context/context.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/context/context.types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/lib/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/lib/auth.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/lib/axios.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/lib/axios.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

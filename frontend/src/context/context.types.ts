@@ -10,6 +10,7 @@ export interface User {
 
 export interface AuthContextType {
   user: User | null;
+  setUser: React.Dispatch<React.SetStateAction<User | null>>;
   loading: boolean
   login: (accessToken: string, refreshToken: string) => void;
   logout: () => void;

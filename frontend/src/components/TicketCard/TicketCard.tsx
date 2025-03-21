@@ -18,9 +18,6 @@ const TicketCard: React.FC<ITicketCard> = ({ travel, loading, onSelect }) => {
                     <Image src="/icons/train.svg" width={50} height={50} alt="Train Icon" className="w-full max-w-8 md:max-w-16 h-16 object-contain" />
                     <TicketRouteDetails travel={travel} />
                     <TicketPrice amount={travel?.amount} />
-                    {loading && (
-                        <div className="min-w-5 min-h-5 w-5 h-5 border-2 border-[#444763] border-t-transparent rounded-full animate-spin"></div>
-                    )}
                 </div>
             </button>
             </div>

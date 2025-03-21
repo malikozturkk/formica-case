@@ -1,5 +1,5 @@
 import axios from "axios";
-import { refreshAccessToken, getCookie } from "./auth";
+import { refreshAccessToken } from "./auth";
 const API_URL = process.env.NEXT_PUBLIC_API_URL || process.env.API_URL || "http://formica-case.local/api";
 
 const api = axios.create({
@@ -8,7 +8,7 @@ const api = axios.create({
 });
 
 api.interceptors.request.use(async (config) => {
-  const accessToken = getCookie("access_token");
+  const accessToken = localStorage.getItem("access_token");
 
   if (accessToken) {
     config.headers.Authorization = `Bearer ${accessToken}`;
