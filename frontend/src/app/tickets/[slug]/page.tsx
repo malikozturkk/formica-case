@@ -23,8 +23,9 @@ export default async function WhatTimeIsIt({ params }: { params: Params }) {
         
         const ticketData: TicketData = await res.json();
 
-        return ticketData.ticketNumber 
-            ? <TicketDetail {...ticketData} />
-            : <div>Bu ticket bulunamadı</div>;
-    } catch { return <div>Bu ticket bulunamadı</div> }
+        return <TicketDetail {...ticketData} />
+
+    } catch { 
+        return <div>Bu ticket bulunamadı</div> 
+    }
 }

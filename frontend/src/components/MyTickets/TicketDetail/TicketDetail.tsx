@@ -1,17 +1,26 @@
 import { TicketData } from "../MyTickets.types";
-import TicketCircles from "../TicketCircles";
 import TicketHeader from "./Header";
 import TicketInfo from "./Info";
 import TravelTime from "./TravelTime";
 import TicketRoute from "./Route";
+import TicketDetailContainer from "./Container";
 
 const TicketDetail = (ticketData: TicketData) => {
+
+  if (!ticketData.ticketNumber) {
+    return (
+      <TicketDetailContainer>
+        <div className="min-h-72 flex items-center justify-center text-sm text-blue-100 font-medium">Bu bilet bulunamadı.</div>
+      </TicketDetailContainer>
+    )
+  }
+
   const { status, ticketNumber, user, travel, createdAt, updatedAt } = ticketData;
   const { email, firstName, lastName } = user;
   const { amount, departure, arrival, departureTime, arrivalTime, duration } = travel;
   
   return (
-    <div className="w-full bg-blue-900 text-white p-9 md:p-12 rounded-lg shadow-xl relative overflow-hidden">
+    <TicketDetailContainer>
       <TicketHeader status={status} />
       <div className="space-y-3 text-lg">
         <TicketInfo label="Bilet No" value={ticketNumber} />
@@ -23,13 +32,7 @@ const TicketDetail = (ticketData: TicketData) => {
         <TicketInfo label="Seyahat Süresi" value={`${duration.hours} saat ${duration.minutes} dakika`} />
         <TicketInfo label="Ödenen Ücret" value={`${amount} TL`} />
       </div>
-      <TicketCircles side="left" />
-      <TicketCircles side="right" />
-      <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-100 to-blue-600" />
-      <div className="absolute bottom-0 right-0 w-2 h-full bg-gradient-to-t from-blue-600 to-blue-100" />
-      <div className="absolute bottom-0 left-0 w-full h-2 bg-gradient-to-r from-blue-600 to-blue-100" />
-      <div className="absolute bottom-0 left-0 w-2 h-full bg-gradient-to-t from-blue-100 to-blue-600" />
-    </div>
+    </TicketDetailContainer>
   );
 };
 
