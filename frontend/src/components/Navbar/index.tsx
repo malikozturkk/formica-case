@@ -56,7 +56,7 @@ const Navbar = () => {
                         <div className="flex flex-col space-y-4">
                             <div className="border-b border-gray-200 pb-4 flex flex-col gap-3 items-start px-4 justify-between md:items-center md:flex-row md:px-0">
                                 <Button type="button" className="rounded-2xl float-right w-auto" loading={loading} onClick={() => !user && setLoginDialog(true)}>
-                                    {user ? `Hoşgeldiniz, ${user.firstName} ${user.lastName}` : "Üye Girişi"}
+                                    {user ? `Hoşgeldiniz, ${user.firstName}` : "Üye Girişi"}
                                 </Button>
                                 <p className="text-base font-bold text-[#444763] leading-normal">Bakiye: {formatPrice(user?.balance)}</p>
                             </div>

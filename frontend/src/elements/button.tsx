@@ -7,6 +7,8 @@ type ButtonProps = {
   loading?: boolean
   onClick?: (e: MouseEvent<HTMLButtonElement>) => void
   children: ReactNode
+  color?: string
+  padding?: string
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -16,10 +18,12 @@ const Button: React.FC<ButtonProps> = ({
   loading,
   onClick,
   children,
+  color = "white",
+  padding = "px-4 py-3"
 }) => {
   return (
     <button
-    className={`px-4 py-3 flex items-center justify-center gap-2 bg-blue-900 text-white rounded-md transition-all duration-300
+    className={`flex items-center justify-center gap-2 bg-blue-900 rounded-md transition-all duration-300 text-${color} ${padding}
       ${loading ? 'opacity-50 cursor-not-allowed' : 'opacity-100 cursor-pointer'}
       ${className ? className : ''}`}
       type={type}

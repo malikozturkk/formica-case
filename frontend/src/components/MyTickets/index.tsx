@@ -1,19 +1,12 @@
 "use client"
 import React from "react";
-import { TicketData, TicketStatus } from "./MyTickets.types";
+import { statusText, TicketData } from "./MyTickets.types";
 import TicketRouteDetails from "../TicketCard/TicketRouteDetails";
-import TicketPrice from "../TicketCard/TicketPrice";
 import Image from "next/image";
 import Link from "next/link";
+import Button from "@/elements/button";
 
 const MyTickets = ({ ticketsData }: { ticketsData: TicketData[] }) => {
-    const statusText: Record<TicketStatus, string> = {
-        ACQUIRED: "Satın Alındı",
-        CHECKEDIN: "Trene Biniş Yapıldı",
-        USED: "Yolculuk Tamamlandı",
-        EXPIRED: "Süresi Doldu"
-      };
-
     return (
         <div className="w-full rounded-3xl flex flex-col gap-8 p-3 md:px-5 md:py-6" style={{ boxShadow: "0 10px 24px 0 rgba(68,60,98,.22)" }}>
             <div className="px-4 md:p-8 text-blue-900 font-bold text-2xl">
@@ -39,7 +32,11 @@ const MyTickets = ({ ticketsData }: { ticketsData: TicketData[] }) => {
                                         <div className="text-xs md:text-sm font-normal px-1 py-0.5 w-fit rounded-md bg-gray-300">PNR: <strong>{ticket.ticketNumber}</strong></div>
                                     </div>
                                     <TicketRouteDetails travel={ticket.travel} />
-                                    <TicketPrice amount={ticket.travel.amount} />
+                                    <div className="flex flex-col gap-1 max-w-fit md:max-w-1/8 w-full items-center md:items-end">
+                                        <Button type="button" color="blue-900" className="bg-white border-2 border-blue-900 rounded-md text-sm truncate hover:text-white hover:bg-blue-900" padding="p-1 md:px-4 md:py-3">
+                                            Detaylar
+                                        </Button>
+                                    </div>
                                 </div>
                             </Link>
                         </div>

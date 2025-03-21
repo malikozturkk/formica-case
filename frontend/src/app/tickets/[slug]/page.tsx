@@ -1,5 +1,5 @@
 import { TicketData } from "@/components/MyTickets/MyTickets.types";
-import TicketDetail from "@/components/MyTickets/TicketDetail";
+import TicketDetail from "@/components/MyTickets/TicketDetail/TicketDetail";
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation'
 

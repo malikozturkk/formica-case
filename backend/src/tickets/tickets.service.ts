@@ -12,7 +12,8 @@ export class TicketsService {
     this.logger.log(`Get all tickets for user ID ${user.id}`)
     const tickets = await this.prisma.tickets.findMany({
         where: { userId: user.id },
-        include: { travel: true },
+        include: { travel: true, user: true },
+        orderBy: { createdAt: 'desc' }
     });
     
     return tickets.map(ticket => ({
@@ -28,7 +29,7 @@ export class TicketsService {
           ticketNumber,
           userId: user.id,
       },
-      include: { travel: true },
+      include: { travel: true, user: true },
     });
 
     if (!ticket) {
