@@ -1,0 +1,13 @@
+import { Module } from '@nestjs/common';
+import { CheckInController } from './check-in.controller';
+import { CheckInService } from './check-in.service';
+import { PrismaService } from 'src/prisma.service';
+import { AuthModule } from 'src/auth/auth.module'; 
+import { CheckInValidationPipe } from './check-in-validation.pipe';
+
+@Module({
+  imports: [AuthModule], 
+  controllers: [CheckInController],
+  providers: [CheckInService, PrismaService, CheckInValidationPipe],
+})
+export class CheckInModule {}

@@ -8,11 +8,11 @@ import {
   } from '@nestjs/common';
 import { REQUEST } from '@nestjs/core';
 import { Users } from '@prisma/client';
-  import { PrismaService } from 'src/prisma.service';
+import { PrismaService } from 'src/prisma.service';
 
-  interface AuthenticatedRequest extends Request {
-      user: Users;
-    }
+interface AuthenticatedRequest extends Request {
+  user: Users;
+}
   
   @Injectable()
   export class TravelsPipe implements PipeTransform {
