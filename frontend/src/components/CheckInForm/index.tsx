@@ -57,7 +57,7 @@ const CheckInForm = () => {
                 />
               </div>
           </div>
-          <Button type="submit" className="rounded-2xl w-full md:w-1/4" disabled={isSubmitting}>Check-in yap</Button>
+          <Button type="submit" className="rounded-2xl w-full md:w-1/4 hover:bg-blue-950" disabled={isSubmitting}>Check-in yap</Button>
         </form>
       </div>
     </>
