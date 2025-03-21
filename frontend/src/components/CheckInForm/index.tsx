@@ -30,11 +30,11 @@ const CheckInForm = () => {
           {errors.root.response.message}
         </div>
       )}
-      <div className="bg-[#9ba3aa] w-full md:w-fit px-4 py-3 rounded-lg rounded-b-none text-white flex items-center gap-2">
+      <div className="bg-[#de2619] w-full md:w-fit px-4 py-3 rounded-lg rounded-b-none text-white flex items-center gap-2 border border-gray-200 justify-center md:justify-start">
         <Image src="/icons/train-mini.svg" alt="Mini Train Icon" width={18} height={24} />
         Tren Bileti
       </div>
-      <div className="flex flex-col gap-4 rounded-lg rounded-tl-none p-4 md:p-8" style={{ boxShadow: "0 10px 24px 0 rgba(68,60,98,.22)" }}>
+      <div className="flex flex-col gap-4 rounded-tr-none md:rounded-tr-lg rounded-lg rounded-tl-none p-4 md:p-8 border border-gray-200" style={{ boxShadow: "0 10px 24px 0 rgba(68,60,98,.22)" }}>
         <h1 className="text-base md:text-2xl">Check-in</h1>
         <form className="flex gap-4 items-start flex-col md:flex-row" onSubmit={handleSubmit(onSubmit)} noValidate>
           <div className="w-full md:w-3/4 flex items-center justify-between gap-2 flex-col md:flex-row">
