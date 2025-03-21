@@ -1,7 +1,7 @@
 import React from "react";
 
 type InputProps = {
-  label: string;
+  label?: string;
   type?: string;
   error?: string;
 } & React.InputHTMLAttributes<HTMLInputElement>;
@@ -9,9 +9,11 @@ type InputProps = {
 const Input: React.FC<InputProps> = ({ label, type = "text", error, ...rest }) => {
   return (
     <div>
-      <label className="block text-gray-300 font-normal text-xs mb-1">
-        {label} {rest.required && <span>*</span>}
-      </label>
+      {label &&
+        <label className="block text-gray-300 font-normal text-xs mb-1">
+          {label} {rest.required && <span>*</span>}
+        </label>
+      }
       <div className="relative">
         <input
           type={type}

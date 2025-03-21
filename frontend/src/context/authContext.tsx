@@ -3,6 +3,7 @@ import { createContext, useContext, useEffect, useState } from 'react';
 import { AuthContextType, User } from './context.types';
 import api from '@/lib/axios';
 import { deleteCookie, getCookie, setCookie } from '@/utils/cookie';
+import { API_URL } from '@/lib/auth';
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
@@ -62,7 +63,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     }
 
     try {
-      const response = await api.post(`${process.env.NEXT_PUBLIC_API_URL || process.env.API_URL}/auth/refresh-token`, {
+      const response = await api.post(`${API_URL}/auth/refresh-token`, {
         refresh_token: refreshToken,
       });
 

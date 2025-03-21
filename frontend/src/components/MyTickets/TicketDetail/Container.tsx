@@ -1,5 +1,5 @@
 import React from "react"
-import TicketCircles from "../TicketCircles"
+import TicketCircles from "./TicketCircles"
 
 const TicketDetailContainer = ({ children }: { children: React.ReactNode }) => {
     return (

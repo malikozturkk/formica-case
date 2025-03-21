@@ -4,9 +4,8 @@ import Input from "@/elements/input"
 import { useForm } from "react-hook-form"
 import { login } from "@/api/auth"
 import { useAuth } from "@/context/authContext"
-import { ILoginForm } from "./LoginForm.types"
 
-const LoginForm: React.FC<ILoginForm> = ({ setLoginDialog }) => {
+const LoginForm = ({ setLoginDialog }: { setLoginDialog: React.Dispatch<React.SetStateAction<boolean>> }) => {
   const {
     register,
     handleSubmit,

@@ -1,7 +1,6 @@
 import axios from "axios";
-import { refreshAccessToken } from "./auth";
+import { API_URL, refreshAccessToken } from "./auth";
 import { getCookie } from "@/utils/cookie";
-const API_URL = process.env.NEXT_PUBLIC_API_URL || process.env.API_URL || "http://formica-case.local/api";
 
 const api = axios.create({
   baseURL: API_URL,

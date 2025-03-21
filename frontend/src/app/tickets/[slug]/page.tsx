@@ -5,7 +5,7 @@ import { redirect } from 'next/navigation'
 
 type Params = Promise<{ slug: string }>;
 
-export default async function WhatTimeIsIt({ params }: { params: Params }) {
+export default async function Detail({ params }: { params: Params }) {
     const { slug } = await params
     const cookieStore = await cookies()
     const accessToken = cookieStore.get("access_token")?.value;

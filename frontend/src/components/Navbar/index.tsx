@@ -69,7 +69,7 @@ const Navbar = () => {
                                         Biletlerim
                                     </Link>
                                     <Link href="/check-in" title="Check-In" className={navItemsClassName} onClick={() => setOpen(!open)}>
-                                        Check-in Yap
+                                        Check-in
                                     </Link>
                                     <Link href="#" title="Çıkış Yap" className={navItemsClassName} onClick={() => {logout(), setOpen(!open)}}>
                                         Çıkış Yap
