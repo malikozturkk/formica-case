@@ -15,7 +15,7 @@ const TicketRouteDetails: React.FC<{travel: TravelData}> = ({ travel }) => {
             <div>
                 <div className="flex flex-wrap justify-between mt-4">
                     <span className={`${citiesCol} w-1/2 max-w-1/3 order-1`}>{travel.departure}</span> 
-                    <span className={`${citiesCol} order-2 text-center w-full max-w-full md:w-1/2 md:max-w-1/3`}>{travel.duration.hours}sa {travel.duration.minutes}dk</span>
+                    <span className={`${citiesCol} order-2 text-center w-full max-w-full md:w-1/2 md:max-w-1/3`}>{travel?.duration?.hours || 0}sa {travel?.duration?.minutes || 0}dk</span>
                     <span className={`${citiesCol} w-1/2 max-w-1/3 order-1 md:order-3 text-right`}>{travel.arrival}</span>
                 </div>
 
