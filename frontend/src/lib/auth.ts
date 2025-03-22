@@ -16,7 +16,7 @@ export const refreshAccessToken = async (): Promise<string | null> => {
     });
 
     const { access_token, refresh_token: newRefreshToken } = response.data;
-    setCookie("access_token", access_token, 1);
+    setCookie("access_token", access_token, 1 / 24);
     setCookie("refresh_token", newRefreshToken, 30);
 
     return access_token;

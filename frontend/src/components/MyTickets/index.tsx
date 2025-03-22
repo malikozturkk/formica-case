@@ -15,7 +15,7 @@ const MyTickets = ({ ticketsData }: { ticketsData: TicketData[] }) => {
                 </div>
             </div>
 
-            {ticketsData.length === 0 ? 
+            {!ticketsData[0]?.ticketNumber || ticketsData.length === 0 ? 
                 <div className="flex items-center justify-center h-96 text-[#444763] text-sm font-medium">Biletiniz bulunmamaktadır.</div>
                 : 
                 ticketsData.map((ticket: TicketData) => (
