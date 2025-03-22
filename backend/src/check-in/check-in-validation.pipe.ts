@@ -1,6 +1,7 @@
 import { PipeTransform, Injectable, BadRequestException, NotFoundException, UnauthorizedException } from '@nestjs/common';
 import { PrismaService } from 'src/prisma.service';
 import { TicketStatus, Users } from '@prisma/client';
+import { toZonedTime } from 'date-fns-tz';
 
 @Injectable()
 export class CheckInValidationPipe implements PipeTransform {
@@ -15,18 +16,24 @@ export class CheckInValidationPipe implements PipeTransform {
 
   async transform(value: { surname: string; ticketNumber: number; user: Users }) {
     const { surname, ticketNumber, user } = value;
-    
-    const ticket = await this.prisma.tickets.findUnique({
-      where: { ticketNumber },
-      include: { user: true },
+    const timeZone = 'Europe/Istanbul';
+    const now = new Date();
+    const istanbulNow = toZonedTime(now, timeZone);
+  
+    const ticket = await this.prisma.tickets.findFirst({
+      where: { 
+        ticketNumber,
+        status: TicketStatus.ACQUIRED,
+        userId: user.id,
+        travel: {
+          departureTime: { gte: istanbulNow }
+        }
+      },
+      include: { user: true, travel: true },
     });
-
-    if (!ticket || ticket.status !== TicketStatus.ACQUIRED) {
-      throw new NotFoundException('Ticket not found.');
-    }
-
-    if (ticket.userId !== user.id) {
-      throw new UnauthorizedException('This ticket does not belong to the user.');
+  
+    if (!ticket) {
+      throw new NotFoundException('Ticket not found or expired.');
     }
 
     const normalizedSurname = this.normalizeString(surname);
