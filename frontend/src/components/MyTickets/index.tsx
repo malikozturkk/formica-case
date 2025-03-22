@@ -19,7 +19,7 @@ const MyTickets = ({ ticketsData }: { ticketsData: TicketData[] }) => {
                 <div className="flex items-center justify-center h-96 text-[#444763] text-sm font-medium">Biletiniz bulunmamaktadır.</div>
                 : 
                 ticketsData.map((ticket: TicketData) => (
-                    <div key={ticket.ticketNumber} className={`rounded-3xl bg-white overflow-hidden relative flex flex-col bg-clip-border break-words ${ticket.status === "EXPIRED" ? "opacity-50 cursor-not-allowed" : "opacity-100 cursor-pointer"}`} style={{ boxShadow: "0 10px 24px 0 rgba(68,60,98,.22)" }}>
+                    <div key={ticket.ticketNumber} className={`rounded-3xl bg-white overflow-hidden relative flex flex-col bg-clip-border break-words ${ticket.status === "USED" || ticket.status === "EXPIRED" ? "opacity-50 cursor-not-allowed" : "opacity-100 cursor-pointer"}`} style={{ boxShadow: "0 10px 24px 0 rgba(68,60,98,.22)" }}>
                         <div className="border-b-0 bg-white rounded-3xl cursor-pointer p-3 md:py-4 md:px-8">
                             <Link 
                                 href={`/tickets/${ticket.ticketNumber}`}

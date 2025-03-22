@@ -5,8 +5,8 @@ export type TicketStatus = "ACQUIRED" | "CHECKEDIN" | "USED" | "EXPIRED";
 
 export const statusText: Record<TicketStatus, string> = {
     ACQUIRED: "Satın Alındı",
-    CHECKEDIN: "Trene Biniş Yapıldı",
-    USED: "Yolculuk Tamamlandı",
+    CHECKEDIN: "Check-in Yapıldı",
+    USED: "Trene Biniş Yapıldı",
     EXPIRED: "Süresi Doldu"
 };
 
