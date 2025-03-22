@@ -1,4 +1,4 @@
-import { PipeTransform, Injectable, BadRequestException } from '@nestjs/common';
+import { PipeTransform, Injectable, BadRequestException, NotFoundException, UnauthorizedException } from '@nestjs/common';
 import { PrismaService } from 'src/prisma.service';
 import { TicketStatus, Users } from '@prisma/client';
 
@@ -22,11 +22,11 @@ export class CheckInValidationPipe implements PipeTransform {
     });
 
     if (!ticket || ticket.status !== TicketStatus.ACQUIRED) {
-      throw new BadRequestException('Ticket not found.');
+      throw new NotFoundException('Ticket not found.');
     }
 
     if (ticket.userId !== user.id) {
-      throw new BadRequestException('This ticket does not belong to the user.');
+      throw new UnauthorizedException('This ticket does not belong to the user.');
     }
 
     const normalizedSurname = this.normalizeString(surname);

@@ -1,35 +1,69 @@
 "use client"
+import { useEffect, useState } from "react"
 import Button from "@/elements/button"
 import Input from "@/elements/input"
 import { useForm } from "react-hook-form"
 import { checkIn } from "@/api/check-in"
 import Image from "next/image"
+import Alert from "@mui/material/Alert";
+import { Snackbar } from "@mui/material";
 
 const CheckInForm = () => {
+  const [loading, setLoading] = useState(false);
+  const [alert, setAlert] = useState<{ message: string; type: "success" | "error" | "warning" | null }>({ message: "", type: null });
+  const [open, setOpen] = useState(false);
+
+  const handleClose = () => {
+      setOpen(false);
+  };
+
+  useEffect(() => {
+    if (alert.type) {
+        setOpen(true);
+        setTimeout(() => {
+            setOpen(false);
+        }, 3000);
+    }
+  }, [alert]);
+
   const {
     register,
     handleSubmit,
-    setError,
     formState: { errors, isSubmitting },
   } = useForm<{ surname: string; pnr: number }>();
 
 
   const onSubmit = async (data: { surname: string; pnr: number }) => {
+    setLoading(true);
+    setAlert({ message: "", type: null }); 
     try {
       const res = await checkIn(data.surname, data.pnr);
-      console.log(res, "check-in response'u")
+      setAlert({ message: `${res.ticketNumber} Numaralı bilet için check-in işlemi başarıyla yapıldı`, type: "success" });
     } catch (error: any) {
-      setError("root.response", { message: "Soyadı veya PNR yanlış" });
+      const { status } = error
+      if (status === 400) {
+        setAlert({ message: "Bilet sahibinin soyadı yanlış", type: "warning" });
+      } else if (status === 401) {
+        setAlert({ message: "Bileti check-in yapmak için giriş yapmalısınız", type: "error" });
+      } else if (status === 404) {
+        setAlert({ message: "Böyle bir bilet bulunamadı", type: "error" });
+      } else {
+        setAlert({ message: "Bilinmeyen bir hata oluştu", type: "error" });
+      }
     }
+    setLoading(false);
   };
 
   return (
     <>
-      {errors.root?.response && (
-        <div className="bg-red-500 text-white text-base mb-4 rounded-xl text-center p-4">
-          {errors.root.response.message}
-        </div>
-      )}
+      <Snackbar
+          open={open}
+          autoHideDuration={3000}
+          onClose={handleClose}
+          anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+      >
+        {alert.type ? <Alert severity={alert.type} onClose={handleClose}>{alert.message}</Alert> : <div />}
+      </Snackbar>
       <div className="bg-[#de2619] w-full md:w-fit px-4 py-3 rounded-lg rounded-b-none text-white flex items-center gap-2 border border-gray-200 justify-center md:justify-start">
         <Image src="/icons/train-mini.svg" alt="Mini Train Icon" width={18} height={24} />
         Tren Bileti
@@ -57,7 +91,7 @@ const CheckInForm = () => {
                 />
               </div>
           </div>
-          <Button type="submit" className="rounded-2xl w-full md:w-1/4 hover:bg-blue-950" disabled={isSubmitting}>Check-in yap</Button>
+          <Button type="submit" className="rounded-2xl w-full md:w-1/4 hover:bg-blue-950" loading={loading} disabled={isSubmitting}>Check-in yap</Button>
         </form>
       </div>
     </>
