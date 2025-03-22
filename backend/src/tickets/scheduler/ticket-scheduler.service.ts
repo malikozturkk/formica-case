@@ -16,7 +16,7 @@ export class TicketSchedulerService {
     const now = new Date();
     const istanbulNow = toZonedTime(now, timeZone);
 
-    this.logger.log('Checking ticket statuses for -> ', istanbulNow);
+    this.logger.log(`Checking ticket statuses for -> ${istanbulNow} tickets`);
 
     const travels = await this.prisma.travels.findMany({
       where: {
