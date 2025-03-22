@@ -8,6 +8,7 @@ import {
   } from '@nestjs/common';
 import { REQUEST } from '@nestjs/core';
 import { Users } from '@prisma/client';
+import { toZonedTime } from 'date-fns-tz';
 import { PrismaService } from 'src/prisma.service';
 
 interface AuthenticatedRequest extends Request {
@@ -21,8 +22,18 @@ interface AuthenticatedRequest extends Request {
     async transform(value: any, metadata: ArgumentMetadata) {
       const { id } = value;
       const user = this.request.user
-  
-      const travel = await this.prisma.travels.findUnique({ where: { id } });
+      const timeZone = 'Europe/Istanbul';
+      const now = new Date();
+      const istanbulNow = toZonedTime(now, timeZone);
+
+      const travel = await this.prisma.travels.findFirst({
+        where: {
+          id,
+          departureTime: {
+            gte: istanbulNow,
+          },
+        },
+      });
   
       if (!travel) {
         throw new NotFoundException(`Travel with ID ${id} not found.`);

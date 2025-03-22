@@ -3,6 +3,7 @@ import { PrismaService } from 'src/prisma.service';
 import { TravelsTransformer } from './travels.transformer';
 import { BuyTicketDto } from './dto/travels.dto';
 import {  Users } from '@prisma/client';
+import { toZonedTime } from 'date-fns-tz';
 
 @Injectable()
 export class TravelsService {
@@ -10,7 +11,15 @@ export class TravelsService {
   constructor(private prisma: PrismaService) {}
 
   async getTravels() {
+    const timeZone = 'Europe/Istanbul';
+    const now = new Date();
+    const istanbulNow = toZonedTime(now, timeZone);
     const travels = await this.prisma.travels.findMany({
+      where: {
+        departureTime: {
+          gte: istanbulNow,
+        },
+      },
       orderBy: {
         departureTime: 'asc',
       },
