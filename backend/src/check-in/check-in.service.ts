@@ -19,7 +19,7 @@ export class CheckInService {
     const ticket = await this.checkInValidationPipe.transform({ surname, ticketNumber, user });
 
     const updatedTicket = await this.updateTicketStatus(ticket.ticketNumber);
-    this.ticketGateway.sendTicketUpdate(updatedTicket.ticketNumber, updatedTicket.status);
+    this.ticketGateway.sendTicketUpdate(user.id, updatedTicket.ticketNumber, updatedTicket.status);
     return updatedTicket;
   }
 

@@ -1,15 +1,25 @@
 "use client";
 import { useEffect, useState } from "react";
-import { io } from "socket.io-client";
+import { io, Socket } from "socket.io-client";
 import { API_URL } from "@/lib/auth";
 import { TicketStatus } from "@/components/MyTickets/MyTickets.types";
+import { useAuth } from "@/context/authContext";
 
-const socket = io(API_URL);
+let socket: Socket | null = null; 
 
 const useTicketStatus = (ticketNumber: number, initialStatus: TicketStatus) => {
+  const { user } = useAuth();
   const [status, setStatus] = useState<TicketStatus>(initialStatus);
 
   useEffect(() => {
+    if (!user?.id) return;
+
+    if (!socket) {
+      socket = io(API_URL, {
+        query: { userId: user.id },
+      });
+    }
+
     const handleStatusUpdate = (data: { ticketNumber: number; status: TicketStatus }) => {
       if (data.ticketNumber === ticketNumber) {
         setStatus(data.status);
@@ -19,9 +29,9 @@ const useTicketStatus = (ticketNumber: number, initialStatus: TicketStatus) => {
     socket.on("ticketUpdated", handleStatusUpdate);
 
     return () => {
-      socket.off("ticketUpdated", handleStatusUpdate);
+      socket?.off("ticketUpdated", handleStatusUpdate);
     };
-  }, [ticketNumber]);
+  }, [ticketNumber, user?.id]);
 
   return status;
 };

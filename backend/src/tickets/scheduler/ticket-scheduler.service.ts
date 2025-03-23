@@ -47,7 +47,7 @@ export class TicketSchedulerService {
         });
 
         checkedInTickets.forEach((ticket) => {
-          this.ticketGateway.sendTicketUpdate(ticket.ticketNumber, TicketStatus.USED);
+          this.ticketGateway.sendTicketUpdate(ticket.userId, ticket.ticketNumber, TicketStatus.USED);
         });
 
         this.logger.log(`Marked ${checkedInTickets.length} tickets as USED`);
@@ -60,7 +60,7 @@ export class TicketSchedulerService {
         });
 
         acquiredTickets.forEach((ticket) => {
-          this.ticketGateway.sendTicketUpdate(ticket.ticketNumber, TicketStatus.EXPIRED);
+          this.ticketGateway.sendTicketUpdate(ticket.userId, ticket.ticketNumber, TicketStatus.EXPIRED);
         });
 
         this.logger.log(`Marked ${acquiredTickets.length} tickets as EXPIRED`);
