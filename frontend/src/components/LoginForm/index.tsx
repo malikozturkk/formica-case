@@ -20,7 +20,8 @@ const LoginForm = ({ setLoginDialog }: { setLoginDialog: React.Dispatch<React.Se
       const { access_token, refresh_token } = await login(data.email, data.password);
       saveToken(access_token, refresh_token);
       setLoginDialog(false);
-    } catch (error: any) {
+    } catch (error: unknown) {
+      console.error(error, "error")
       setError("root.response", { message: "E-mail veya şifre yanlış" });
     }
   };

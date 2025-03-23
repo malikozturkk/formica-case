@@ -1,6 +1,13 @@
 import { formatTime } from "@/utils/formaters";
 
-const TicketRoute = ({ departure, arrival, departureTime, arrivalTime }: any) => (
+interface TicketRouteProps {
+  departure: string;
+  arrival: string;
+  departureTime: string | Date;
+  arrivalTime: string | Date;
+}
+
+const TicketRoute = ({ departure, arrival, departureTime, arrivalTime }: TicketRouteProps) => (
     <div className="flex justify-between items-center gap-2 border-t border-blue-400 pt-3">
       <span className="flex flex-col relative font-semibold text-xs md:text-lg items-start">
         <span className="text-sm opacity-80">{departure}</span>

@@ -29,7 +29,7 @@ api.interceptors.response.use(
           return axios(error.config); 
         }
       } catch (refreshError) {
-        console.error("Session expired. Please log in again.");
+        console.error(refreshError, "Session expired. Please log in again.");
       }
     }
 

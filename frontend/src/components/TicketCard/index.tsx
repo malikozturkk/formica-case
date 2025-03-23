@@ -36,15 +36,18 @@ const TicketCardsContainer: React.FC<ITicketCardsContainer> = ({ travelsData }) 
           if (user) {
             setUser({ ...user, balance: res.data.newBalance });
           }
-        } catch (error: any) {
-          const { status } = error
-          if (status === 400) {
-            setAlert({ message: "Yetersiz bakiye", type: "error" });
-          } else if (status === 401) {
-            setAlert({ message: "Bilet satın almak için giriş yapmalısınız", type: "error" });
-          } else if (status === 404) {
-            setAlert({ message: "Böyle bir seyahat bulunamadı", type: "error" });
-          } else setAlert({ message: "Bir hata oluştu, lütfen tekrar deneyin!", type: "error" });
+        } catch (error: unknown) {
+          if (error instanceof Error && "status" in error) {
+            const { status } = error as { status?: number };
+            if (status === 400) {
+              setAlert({ message: "Yetersiz bakiye", type: "error" });
+            } else if (status === 401) {
+              setAlert({ message: "Bilet satın almak için giriş yapmalısınız", type: "error" });
+            } else if (status === 404) {
+              setAlert({ message: "Böyle bir seyahat bulunamadı", type: "error" });
+            } 
+          }
+          else setAlert({ message: "Bir hata oluştu, lütfen tekrar deneyin!", type: "error" });
         }
         
         setLoading(false);

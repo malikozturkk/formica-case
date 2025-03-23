@@ -58,7 +58,9 @@ const Navbar = () => {
                                 <Button type="button" className="rounded-2xl float-right w-auto" loading={loading} onClick={() => !user && setLoginDialog(true)}>
                                     {user ? `Hoşgeldin, ${user.firstName}` : "Üye Girişi"}
                                 </Button>
-                                <p className="text-base font-bold text-[#444763] leading-normal">Bakiye: {formatPrice(user?.balance)}</p>
+                                {user &&
+                                    <p className="text-base font-bold text-[#444763] leading-normal">Bakiye: {formatPrice(user?.balance)}</p>
+                                }
                             </div>
                             <Link href="/" title="Anasayfa" className={navItemsClassName} onClick={() => setOpen(!open)}>
                                 Anasayfa
@@ -71,9 +73,16 @@ const Navbar = () => {
                                     <Link href="/check-in" title="Check-In" className={navItemsClassName} onClick={() => setOpen(!open)}>
                                         Check-in
                                     </Link>
-                                    <Link href="#" title="Çıkış Yap" className={navItemsClassName} onClick={() => {logout(), setOpen(!open)}}>
+                                    <button 
+                                        title="Çıkış Yap" 
+                                        className={`${navItemsClassName} text-left cursor-pointer`} 
+                                        onClick={() => {
+                                            logout(); 
+                                            setOpen(!open);
+                                        }}
+                                    >
                                         Çıkış Yap
-                                    </Link>
+                                    </button>
                                 </>
                             }
                         </div>

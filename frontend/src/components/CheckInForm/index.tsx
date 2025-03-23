@@ -39,9 +39,10 @@ const CheckInForm = () => {
     try {
       const res = await checkIn(data.surname, data.pnr);
       setAlert({ message: `${res.ticketNumber} Numaralı bilet için check-in işlemi başarıyla yapıldı`, type: "success" });
-    } catch (error: any) {
-      const { status } = error
-      if (status === 400) {
+    } catch (error: unknown) {
+    if (error instanceof Error && "status" in error) {
+      const { status } = error as { status?: number };
+      if (status === 400) { 
         setAlert({ message: "Bilet sahibinin soyadı yanlış", type: "warning" });
       } else if (status === 401) {
         setAlert({ message: "Bileti check-in yapmak için giriş yapmalısınız", type: "error" });
@@ -50,6 +51,9 @@ const CheckInForm = () => {
       } else {
         setAlert({ message: "Bilinmeyen bir hata oluştu", type: "error" });
       }
+    } else {
+      setAlert({ message: "Beklenmeyen bir hata oluştu", type: "error" });
+    }
     }
     setLoading(false);
   };
