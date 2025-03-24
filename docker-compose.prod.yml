@@ -44,7 +44,7 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
-    command: sh -c "yarn prisma migrate deploy && yarn build && yarn start:prod"
+    command: sh -c "yarn prisma migrate deploy && yarn build && yarn start"
     networks:
       - formica_network
     restart: always
