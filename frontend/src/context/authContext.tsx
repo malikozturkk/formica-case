@@ -43,7 +43,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   }, []);
 
   const login = (accessToken: string, refreshToken: string) => {
-    setCookie("access_token", accessToken, 1 / 24);
+    setCookie("access_token", accessToken, 1);
     setCookie("refresh_token", refreshToken, 30);
     const decodedUser = decodeToken(accessToken);
     setUser(decodedUser);
