@@ -32,7 +32,7 @@ COPY package.json yarn.lock ./
 RUN mkdir -p /deps && \
     cp package.json yarn.lock /deps/ && \
     cd /deps && \
-    yarn install --production && \
+    yarn install --frozen-lockfile && \
     cp -R node_modules /app/ && \
     cd /app
 
