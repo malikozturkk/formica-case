@@ -17,7 +17,7 @@ services:
   frontend:
     build:
       context: ./frontend
-      target: build
+      target: production
     environment:
       - NODE_ENV=production
     ports:
