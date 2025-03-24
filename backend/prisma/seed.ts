@@ -137,8 +137,6 @@ async function main() {
       password: '123123a',
       refreshToken: null,
       balance: 10000,
-      createdAt: new Date('2025-03-21 16:56:34.122'),
-      updatedAt: new Date('2025-03-21 09:56:31.000'),
     },
     {
       firstName: 'Test',
@@ -147,8 +145,6 @@ async function main() {
       password: '123123b',
       refreshToken: null,
       balance: 2500,
-      createdAt: new Date('2025-03-21 17:01:13.360'),
-      updatedAt: new Date('2025-03-21 17:01:13.360'),
     },
     {
       firstName: 'Kemal',
@@ -157,8 +153,6 @@ async function main() {
       password: '1881a',
       refreshToken: null,
       balance: 500000,
-      createdAt: new Date('2025-03-21 17:01:13.360'),
-      updatedAt: new Date('2025-03-21 17:01:13.360'),
     },
   ]
 
