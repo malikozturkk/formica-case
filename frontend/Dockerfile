@@ -37,5 +37,5 @@ RUN yarn build
 FROM nginx:alpine as production
 COPY --from=build /app/.next/standalone /usr/share/nginx/html
 
-EXPOSE 80
+EXPOSE 3000
 CMD ["nginx", "-g", "daemon off;"] 

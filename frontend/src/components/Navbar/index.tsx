@@ -65,13 +65,13 @@ const Navbar = () => {
                             <Link href="/" title="Anasayfa" className={navItemsClassName} onClick={() => setOpen(!open)}>
                                 Anasayfa
                             </Link>
+                            <Link href="/check-in" title="Check-In" className={navItemsClassName} onClick={() => setOpen(!open)}>
+                                Check-in
+                            </Link>
                             {user &&
                                 <>
                                     <Link href="/tickets" title="Biletlerim" className={navItemsClassName} onClick={() => setOpen(!open)}>
                                         Biletlerim
-                                    </Link>
-                                    <Link href="/check-in" title="Check-In" className={navItemsClassName} onClick={() => setOpen(!open)}>
-                                        Check-in
                                     </Link>
                                     <button 
                                         title="Çıkış Yap" 
