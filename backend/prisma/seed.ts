@@ -135,7 +135,7 @@ async function main() {
       lastName: 'Öztürk',
       email: 'malik@malik.com',
       password: '123123a',
-      token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJtYWxpa0BtYWxpay5jb20iLCJmaXJzdE5hbWUiOiJNYWxpayIsImxhc3ROYW1lIjoiw5Z6dMO8cmsiLCJiYWxhbmNlIjo0NzAsImlhdCI6MTc0MjU4MzM3NywiZXhwIjoxNzQ1MTc1Mzc3fQ.l8gJic1cqyUqUyrrLMsmnDqXUzQBFPG5LcpIgkv0u-U',
+      token: null,
       balance: 10000,
       createdAt: new Date('2025-03-21 16:56:34.122'),
       updatedAt: new Date('2025-03-21 09:56:31.000'),
@@ -163,8 +163,10 @@ async function main() {
   ]
 
   for (const user of usersData) {
-    await prisma.users.create({
-      data: user,
+    await prisma.users.upsert({
+      where: { email: user.email },
+      update: user,
+      create: user,
     })
   }
 
