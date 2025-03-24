@@ -15,7 +15,6 @@ Bu proje, verilen case çalışması kapsamında geliştirilmiştir.
 |--------|--------|
 | malik@malik.com | 123123a |
 | test@malik.com | 123123b |
-| ataturk@ata.com | 1881a |
 
 ## Kurulum ve Çalıştırma
 
