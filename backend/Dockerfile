@@ -44,4 +44,4 @@ RUN npm cache clean --force
 
 RUN yarn build
 EXPOSE 4000
-CMD ["yarn", "start:prod"] 
+CMD ["yarn", "start"] 

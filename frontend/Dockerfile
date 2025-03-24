@@ -34,8 +34,22 @@ RUN mkdir -p /deps && \
 COPY . .
 RUN yarn build
 
-FROM nginx:alpine as production
-COPY --from=build /app/.next/standalone /usr/share/nginx/html
+FROM node:20-alpine as production
+WORKDIR /app
+
+RUN apk add --no-cache yarn
+
+COPY package.json yarn.lock ./
+
+RUN mkdir -p /deps && \
+    cp package.json yarn.lock /deps/ && \
+    cd /deps && \
+    yarn install && \
+    cp -R node_modules /app/ && \
+    cd /app
+
+COPY --from=build /app/.next ./.next
+COPY . .
 
 EXPOSE 3000
-CMD ["nginx", "-g", "daemon off;"] 
+CMD ["yarn","start"]
